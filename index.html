@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guppy King · 顶级观赏鱼</title>
+<title>Guppy King · Peces Ornamentales Premium · Barcelona</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+SC:wght@300;400;500;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0a0e1a;
@@ -18,836 +18,575 @@
     --text: #e8eaf0;
     --muted: #7888a8;
     --border: rgba(255,255,255,0.07);
-    --glow: rgba(0,200,224,0.15);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     overflow-x: hidden;
   }
 
-  /* ── NAV ── */
+  /* ─── LANG BAR ─── */
+  .lang-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    height: 34px;
+    background: rgba(6,9,18,0.96);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: flex-end;
+    padding: 0 5%; gap: 4px;
+  }
+  .lang-btn {
+    display: flex; align-items: center; gap: 5px;
+    padding: 4px 12px; border-radius: 50px;
+    border: 1px solid transparent;
+    background: transparent; color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.8px;
+    cursor: pointer; transition: all .2s; text-transform: uppercase;
+  }
+  .lang-btn:hover { color: var(--text); border-color: var(--border); }
+  .lang-btn.active {
+    background: rgba(0,200,224,0.12);
+    border-color: rgba(0,200,224,0.35);
+    color: var(--accent2);
+  }
+  .lang-div { width: 1px; height: 12px; background: var(--border); margin: 0 2px; }
+
+  /* ─── NAV ─── */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: fixed; top: 34px; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 5%;
-    height: 60px;
-    background: rgba(10,14,26,0.85);
-    backdrop-filter: blur(16px);
+    padding: 0 5%; height: 58px;
+    background: rgba(10,14,26,0.88);
+    backdrop-filter: blur(18px);
     border-bottom: 1px solid var(--border);
   }
-
-  .logo {
-    display: flex; align-items: center; gap: 10px;
-    text-decoration: none;
-  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .logo-icon {
     width: 36px; height: 36px; border-radius: 50%;
     background: linear-gradient(135deg, var(--accent), var(--accent2));
     display: flex; align-items: center; justify-content: center;
-    font-size: 16px; font-weight: 900; color: #fff;
     font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 0;
+    font-size: 14px; letter-spacing: 1px; color: #fff;
   }
   .logo-text { display: flex; flex-direction: column; line-height: 1; }
-  .logo-main {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px; letter-spacing: 2px; color: #fff;
-  }
-  .logo-sub {
-    font-size: 9px; letter-spacing: 3px; color: var(--accent2);
-    text-transform: uppercase;
-  }
-
-  .nav-links {
-    display: flex; align-items: center; gap: 32px;
-    list-style: none;
-  }
-  .nav-links a {
-    text-decoration: none; color: var(--muted);
-    font-size: 13px; letter-spacing: 0.5px;
-    transition: color .2s;
-  }
+  .logo-main { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 2px; color: #fff; }
+  .logo-sub { font-size: 9px; letter-spacing: 2.5px; color: var(--accent2); text-transform: uppercase; }
+  .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: 13px; transition: color .2s; }
   .nav-links a:hover { color: var(--text); }
-  .nav-links a span { color: var(--text); font-weight: 500; }
-
   .nav-cta {
-    background: var(--accent);
-    color: #fff !important;
-    padding: 8px 18px;
-    border-radius: 50px;
-    font-size: 13px !important;
-    font-weight: 500;
-    display: flex; align-items: center; gap: 6px;
+    background: var(--accent) !important; color: #fff !important;
+    padding: 8px 18px; border-radius: 50px; font-weight: 500 !important;
+    display: inline-flex !important; align-items: center; gap: 6px;
     transition: opacity .2s !important;
   }
-  .nav-cta:hover { opacity: .85; color: #fff !important; }
+  .nav-cta:hover { opacity: .85 !important; color: #fff !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
 
-  .hamburger {
-    display: none; flex-direction: column; gap: 5px;
-    cursor: pointer; padding: 4px;
+  /* ─── MOBILE MENU ─── */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 150;
+    background: rgba(10,14,26,0.98);
+    flex-direction: column; align-items: center; justify-content: center; gap: 26px;
   }
-  .hamburger span {
-    display: block; width: 22px; height: 2px;
-    background: var(--text); border-radius: 2px;
-    transition: all .3s;
-  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { text-decoration: none; color: var(--text); font-size: 20px; font-weight: 500; }
+  .close-btn { position: absolute; top: 24px; right: 24px; background: none; border: none; color: var(--text); font-size: 26px; cursor: pointer; }
+  .mob-langs { display: flex; gap: 8px; margin-top: 10px; }
 
-  /* ── HERO ── */
+  /* ─── HERO ─── */
   #hero {
     position: relative; min-height: 100vh;
     display: flex; align-items: center; justify-content: center;
-    text-align: center;
-    overflow: hidden;
+    text-align: center; overflow: hidden;
+    padding-top: 92px;
   }
-
-  .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 30% 50%, rgba(0,80,120,0.35) 0%, transparent 70%),
-      radial-gradient(ellipse 50% 60% at 75% 40%, rgba(80,0,30,0.3) 0%, transparent 70%),
-      linear-gradient(180deg, rgba(10,14,26,0.3) 0%, rgba(10,14,26,0.6) 60%, var(--bg) 100%);
-    z-index: 1;
-  }
-
   .hero-fish-bg {
     position: absolute; inset: 0;
     background: url('https://images.unsplash.com/photo-1559825481-12a05cc00344?w=1600&q=80') center/cover no-repeat;
-    filter: brightness(0.35) saturate(1.2);
-    z-index: 0;
+    filter: brightness(0.3) saturate(1.3); z-index: 0;
   }
-
+  .hero-ov {
+    position: absolute; inset: 0; z-index: 1;
+    background:
+      radial-gradient(ellipse 60% 50% at 25% 50%, rgba(0,80,120,0.4) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 60% at 78% 38%, rgba(100,0,30,0.35) 0%, transparent 65%),
+      linear-gradient(180deg, transparent 40%, var(--bg) 100%);
+  }
   .hero-content {
     position: relative; z-index: 2;
-    max-width: 700px; padding: 0 24px;
+    max-width: 720px; padding: 0 24px;
     animation: fadeUp .9s ease both;
   }
-
   .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(0,200,224,0.1);
-    border: 1px solid rgba(0,200,224,0.3);
-    border-radius: 50px;
-    padding: 6px 16px;
-    font-size: 12px; color: var(--accent2);
-    letter-spacing: 1px; margin-bottom: 28px;
+    background: rgba(0,200,224,0.08);
+    border: 1px solid rgba(0,200,224,0.28);
+    border-radius: 50px; padding: 6px 16px;
+    font-size: 11px; color: var(--accent2); letter-spacing: 1.5px; margin-bottom: 28px;
   }
-
   .hero-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(72px, 14vw, 140px);
-    line-height: 0.9;
-    letter-spacing: 4px;
-    margin-bottom: 12px;
+    font-size: clamp(78px, 15vw, 148px);
+    line-height: 0.88; letter-spacing: 4px; margin-bottom: 14px;
   }
-  .hero-title .line1 { color: #fff; display: block; }
-  .hero-title .line2 {
+  .hero-title .t1 { display: block; color: #fff; }
+  .hero-title .t2 {
     display: block;
-    background: linear-gradient(90deg, var(--accent) 0%, var(--accent2) 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
-
-  .hero-sub {
-    font-size: 13px; color: var(--accent2);
-    letter-spacing: 3px; margin-bottom: 16px;
-  }
-  .hero-desc {
-    color: var(--muted); font-size: 15px; line-height: 1.7;
-    max-width: 480px; margin: 0 auto 36px;
-  }
-
-  .hero-btns {
-    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
-  }
+  .hero-tagline { font-size: 11px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--accent2); margin-bottom: 14px; }
+  .hero-desc { color: var(--muted); font-size: 15px; line-height: 1.75; max-width: 500px; margin: 0 auto 36px; }
+  .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
   .btn-primary {
     display: inline-flex; align-items: center; gap: 8px;
     background: var(--accent); color: #fff;
-    padding: 14px 28px; border-radius: 50px;
+    padding: 14px 30px; border-radius: 50px;
     text-decoration: none; font-size: 14px; font-weight: 500;
-    transition: transform .2s, box-shadow .2s;
-    box-shadow: 0 0 30px rgba(232,51,74,0.4);
+    box-shadow: 0 0 32px rgba(232,51,74,0.42); transition: transform .2s, box-shadow .2s;
   }
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 45px rgba(232,51,74,0.6);
-  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(232,51,74,0.6); }
   .btn-outline {
     display: inline-flex; align-items: center; gap: 8px;
-    background: transparent; color: var(--text);
-    border: 1px solid rgba(255,255,255,0.3);
-    padding: 14px 28px; border-radius: 50px;
+    background: rgba(255,255,255,0.05); color: var(--text);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 14px 30px; border-radius: 50px;
     text-decoration: none; font-size: 14px;
-    transition: all .2s;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px); transition: all .2s;
   }
-  .btn-outline:hover {
-    border-color: var(--accent2); color: var(--accent2);
-    box-shadow: 0 0 20px rgba(0,200,224,0.2);
-  }
+  .btn-outline:hover { border-color: var(--accent2); color: var(--accent2); }
 
   .hero-stats {
-    position: absolute; bottom: 60px; left: 0; right: 0;
-    display: flex; justify-content: center; gap: clamp(24px, 6vw, 80px);
-    z-index: 2;
-    animation: fadeUp .9s .3s ease both;
+    position: absolute; bottom: 64px; left: 0; right: 0; z-index: 2;
+    display: flex; justify-content: center; gap: clamp(20px, 6vw, 80px);
+    animation: fadeUp .9s .25s ease both;
   }
   .stat { text-align: center; }
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(28px, 5vw, 42px);
-    color: #fff; letter-spacing: 2px; line-height: 1;
-  }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 5vw, 44px); color: #fff; letter-spacing: 2px; line-height: 1; }
   .stat-label { font-size: 10px; color: var(--muted); letter-spacing: 1px; margin-top: 4px; }
 
-  .hero-ticker {
+  .ticker-bar {
     position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
-    background: rgba(255,255,255,0.04);
-    border-top: 1px solid var(--border);
-    padding: 10px 0;
-    display: flex; gap: 0; overflow: hidden;
+    background: rgba(255,255,255,0.03); border-top: 1px solid var(--border);
+    padding: 10px 0; overflow: hidden;
   }
-  .ticker-inner {
-    display: flex; gap: 48px; white-space: nowrap;
-    animation: ticker 20s linear infinite;
-  }
-  .ticker-item {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 12px; color: var(--muted); letter-spacing: 1px;
-  }
-  .ticker-icon { color: var(--accent2); font-size: 14px; }
-
-  /* ── SHOP ── */
-  #shop {
-    padding: 100px 5% 80px;
-    background: var(--bg2);
+  .ticker-track { display: flex; gap: 48px; white-space: nowrap; animation: ticker 22s linear infinite; }
+  .ticker-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); letter-spacing: 1px; flex-shrink: 0; }
+  .ticker-item em { color: var(--accent2); font-style: normal; }
+  .scroll-arrow {
+    position: absolute; bottom: 56px; left: 50%; transform: translateX(-50%);
+    color: var(--muted); font-size: 20px; z-index: 2;
+    animation: bounce 2.2s ease-in-out infinite;
   }
 
+  /* ─── SECTION COMMON ─── */
+  .section-head { text-align: center; margin-bottom: 44px; }
   .section-badge {
     display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(0,200,224,0.08);
-    border: 1px solid rgba(0,200,224,0.25);
-    border-radius: 50px;
-    padding: 5px 14px; font-size: 11px;
-    color: var(--accent2); letter-spacing: 1.5px;
-    margin-bottom: 20px;
+    background: rgba(0,200,224,0.07); border: 1px solid rgba(0,200,224,0.22);
+    border-radius: 50px; padding: 5px 14px;
+    font-size: 10px; color: var(--accent2); letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 18px;
   }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 6vw, 58px); letter-spacing: 2px; margin-bottom: 8px; }
+  .section-sub { color: var(--muted); font-size: 14px; line-height: 1.6; }
 
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(36px, 6vw, 60px);
-    letter-spacing: 2px; margin-bottom: 10px;
-  }
-  .section-sub { color: var(--muted); font-size: 14px; margin-bottom: 40px; }
+  /* ─── SHOP ─── */
+  #shop { padding: 100px 5% 80px; background: var(--bg2); }
 
-  .filter-tabs {
-    display: flex; gap: 10px; flex-wrap: wrap;
-    margin-bottom: 40px;
-  }
+  .filter-tabs { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
   .tab {
-    padding: 8px 20px; border-radius: 50px;
-    border: 1px solid var(--border);
-    background: transparent; color: var(--muted);
-    font-size: 13px; cursor: pointer;
-    font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
-    transition: all .2s;
+    padding: 8px 20px; border-radius: 50px; border: 1px solid var(--border);
+    background: transparent; color: var(--muted); font-size: 13px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; transition: all .2s;
   }
-  .tab.active {
-    background: var(--accent); border-color: var(--accent);
-    color: #fff;
-  }
-  .tab:hover:not(.active) {
-    border-color: var(--accent2); color: var(--accent2);
-  }
+  .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .tab:hover:not(.active) { border-color: var(--accent2); color: var(--accent2); }
 
-  .fish-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
-  }
-
+  .fish-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 24px; }
   .fish-card {
-    background: var(--card);
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    transition: transform .3s, box-shadow .3s;
-    cursor: pointer;
+    background: var(--card); border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--border); transition: transform .3s, box-shadow .3s, border-color .3s;
+    opacity: 0; animation: fadeUp .5s ease forwards;
   }
-  .fish-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    border-color: rgba(0,200,224,0.2);
-  }
-
-  .fish-img-wrap {
-    position: relative; height: 200px; overflow: hidden;
-  }
-  .fish-img-wrap img {
-    width: 100%; height: 100%; object-fit: cover;
-    transition: transform .4s;
-  }
-  .fish-card:hover .fish-img-wrap img { transform: scale(1.06); }
-
-  .fish-badge {
-    position: absolute; top: 12px; left: 12px;
-    padding: 3px 10px; border-radius: 50px;
-    font-size: 10px; font-weight: 600; letter-spacing: 1px;
-  }
-  .badge-hot { background: var(--accent); color: #fff; }
-  .badge-new { background: var(--accent2); color: #000; }
-  .badge-limited { background: var(--gold); color: #000; }
-  .badge-rare { background: #8b5cf6; color: #fff; }
+  .fish-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,.5); border-color: rgba(0,200,224,0.2); }
+  .fish-img-wrap { position: relative; height: 205px; overflow: hidden; }
+  .fish-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s; }
+  .fish-card:hover .fish-img-wrap img { transform: scale(1.07); }
+  .fish-badge { position: absolute; top: 12px; left: 12px; padding: 3px 10px; border-radius: 50px; font-size: 10px; font-weight: 600; letter-spacing: 1px; }
+  .b-hot { background: var(--accent); color: #fff; }
+  .b-new { background: var(--accent2); color: #000; }
+  .b-rare { background: #8b5cf6; color: #fff; }
+  .b-ltd  { background: var(--gold); color: #000; }
 
   .fish-info { padding: 18px; }
-
-  .fish-meta {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 8px;
-  }
+  .fish-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
   .fish-tag { font-size: 10px; color: var(--accent2); letter-spacing: 1px; }
   .stars { color: #f59e0b; font-size: 12px; }
-  .review-count { color: var(--muted); font-size: 11px; margin-left: 4px; }
-
-  .fish-name-cn { font-size: 17px; font-weight: 600; margin-bottom: 2px; }
-  .fish-name-en { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+  .rcount { color: var(--muted); font-size: 11px; margin-left: 3px; }
+  .fish-name { font-size: 17px; font-weight: 600; margin-bottom: 2px; }
+  .fish-sci { font-size: 11px; color: var(--muted); font-style: italic; margin-bottom: 6px; }
   .fish-desc { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
-
-  .fish-footer {
-    display: flex; align-items: center; justify-content: space-between;
-  }
+  .fish-footer { display: flex; align-items: center; justify-content: space-between; }
   .fish-price { font-size: 20px; font-weight: 700; color: var(--accent); }
-  .fish-price span { font-size: 11px; color: var(--muted); font-weight: 400; }
-
+  .fish-price small { font-size: 11px; color: var(--muted); font-weight: 400; }
   .btn-cart {
     display: flex; align-items: center; gap: 6px;
-    background: var(--accent); color: #fff;
-    border: none; padding: 9px 16px; border-radius: 50px;
-    font-size: 12px; cursor: pointer;
-    font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
-    transition: opacity .2s, transform .2s;
+    background: var(--accent); color: #fff; border: none;
+    padding: 9px 16px; border-radius: 50px; font-size: 12px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; transition: opacity .2s, transform .15s;
   }
   .btn-cart:hover { opacity: .85; transform: scale(1.04); }
-
-  /* hide/show by category */
-  .fish-card[data-cat] { display: block; }
   .fish-card.hidden { display: none; }
 
-  /* ── CONTACT ── */
-  #contact {
-    padding: 100px 5% 0;
-    background: var(--bg);
-  }
+  /* ─── ABOUT ─── */
+  #about { padding: 80px 5%; background: var(--bg); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+  .about-img { border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; border: 1px solid var(--border); }
+  .about-img img { width: 100%; height: 100%; object-fit: cover; }
+  .about-text h3 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(30px, 4vw, 48px); letter-spacing: 2px; margin-bottom: 16px; margin-top: 14px; }
+  .about-text p { color: var(--muted); font-size: 14px; line-height: 1.8; margin-bottom: 12px; }
+  .pill-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .pill { display: flex; align-items: center; gap: 6px; background: var(--card); border: 1px solid var(--border); border-radius: 50px; padding: 8px 16px; font-size: 12px; color: var(--muted); }
+  .pill em { color: var(--accent2); font-style: normal; }
 
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
-  }
-
-  .contact-info { display: flex; flex-direction: column; gap: 16px; }
-
+  /* ─── CONTACT ─── */
+  #contact { padding: 100px 5% 0; background: var(--bg2); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 36px; align-items: start; }
+  .contact-left { display: flex; flex-direction: column; gap: 14px; }
   .info-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px 24px;
-    display: flex; align-items: flex-start; gap: 16px;
-    transition: border-color .2s;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 18px 22px;
+    display: flex; align-items: flex-start; gap: 14px; transition: border-color .2s;
   }
-  .info-card:hover { border-color: rgba(0,200,224,0.3); }
-
+  .info-card:hover { border-color: rgba(0,200,224,0.28); }
   .info-icon {
-    width: 42px; height: 42px; border-radius: 50%;
-    background: rgba(0,200,224,0.1);
-    border: 1px solid rgba(0,200,224,0.2);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; flex-shrink: 0;
-    color: var(--accent2);
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(0,200,224,0.08); border: 1px solid rgba(0,200,224,0.18);
+    display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0;
   }
-  .info-body {}
-  .info-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; margin-bottom: 4px; }
-  .info-value { font-size: 16px; font-weight: 600; }
+  .info-label { font-size: 10px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 3px; }
+  .info-value { font-size: 15px; font-weight: 600; }
   .info-note { font-size: 11px; color: var(--muted); margin-top: 2px; }
 
-  .wechat-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 28px;
-    text-align: center;
-  }
-  .wechat-qr {
-    width: 80px; height: 80px; margin: 0 auto 12px;
-    background: rgba(0,200,224,0.1);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 36px;
-  }
-  .wechat-label { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
-  .wechat-sub { font-size: 11px; color: var(--muted); }
+  .map-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; height: 170px; position: relative; }
+  .map-card iframe { width: 100%; height: 100%; border: none; filter: invert(90%) hue-rotate(190deg) saturate(0.5) brightness(0.85); }
+  .map-label { position: absolute; bottom: 10px; left: 12px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 5px 10px; font-size: 11px; color: var(--accent2); }
 
-  /* Inquiry form */
-  .inquiry-form {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 32px;
-  }
-  .form-title {
-    font-size: 18px; font-weight: 600; margin-bottom: 24px;
-    display: flex; align-items: center; gap: 10px;
-  }
-
-  .form-row {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
-    margin-bottom: 16px;
-  }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
-  .form-group.full { grid-column: 1/-1; }
-  .form-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; }
-
-  .form-input, .form-select, .form-textarea {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 14px;
-    color: var(--text);
-    font-size: 14px;
-    font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
+  .inquiry-form { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 32px; }
+  .form-title { font-size: 17px; font-weight: 600; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .fg { display: flex; flex-direction: column; gap: 5px; }
+  .fg.full { grid-column: 1/-1; }
+  .fg label { font-size: 10px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; }
+  .fg input, .fg select, .fg textarea {
+    background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+    border-radius: 10px; padding: 11px 14px; color: var(--text); font-size: 14px;
+    font-family: 'DM Sans', sans-serif; outline: none; width: 100%;
     transition: border-color .2s, box-shadow .2s;
-    outline: none;
-    width: 100%;
   }
-  .form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
-  .form-input:focus, .form-select:focus, .form-textarea:focus {
-    border-color: var(--accent2);
-    box-shadow: 0 0 0 3px rgba(0,200,224,0.1);
-  }
-  .form-select option { background: var(--card); }
-  .form-textarea { resize: vertical; min-height: 110px; }
-
+  .fg input::placeholder, .fg textarea::placeholder { color: var(--muted); }
+  .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--accent2); box-shadow: 0 0 0 3px rgba(0,200,224,0.1); }
+  .fg select option { background: var(--card2); }
+  .fg textarea { resize: vertical; min-height: 105px; }
   .btn-submit {
-    width: 100%; padding: 15px;
-    background: var(--accent);
-    border: none; border-radius: 50px;
+    width: 100%; margin-top: 20px; padding: 15px;
+    background: var(--accent); border: none; border-radius: 50px;
     color: #fff; font-size: 15px; font-weight: 600;
-    font-family: 'DM Sans', 'Noto Sans SC', sans-serif;
-    cursor: pointer;
+    font-family: 'DM Sans', sans-serif; cursor: pointer;
     display: flex; align-items: center; justify-content: center; gap: 8px;
-    margin-top: 20px;
-    transition: opacity .2s, transform .2s;
-    box-shadow: 0 0 30px rgba(232,51,74,0.3);
+    box-shadow: 0 0 28px rgba(232,51,74,0.3); transition: opacity .2s, transform .2s;
   }
   .btn-submit:hover { opacity: .9; transform: translateY(-1px); }
+  .form-note { text-align: center; font-size: 11px; color: var(--muted); margin-top: 12px; }
 
-  .form-note {
-    text-align: center; font-size: 11px;
-    color: var(--muted); margin-top: 12px;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    margin-top: 80px;
-    background: var(--bg2);
-    border-top: 1px solid var(--border);
-    padding: 48px 5% 28px;
-  }
-  .footer-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 40px; margin-bottom: 40px;
-  }
-  .footer-brand .logo-main { font-size: 22px; }
-  .footer-brand p {
-    font-size: 13px; color: var(--muted);
-    line-height: 1.7; margin-top: 12px; max-width: 240px;
-  }
-
-  .footer-col h4 {
-    font-size: 11px; letter-spacing: 2px;
-    color: var(--muted); text-transform: uppercase;
-    margin-bottom: 16px;
-  }
+  /* ─── FOOTER ─── */
+  footer { margin-top: 80px; background: var(--bg); border-top: 1px solid var(--border); padding: 52px 5% 28px; }
+  .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+  .footer-brand p { font-size: 13px; color: var(--muted); line-height: 1.8; margin-top: 14px; max-width: 250px; }
+  .footer-col h4 { font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
   .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-  .footer-col ul li a {
-    text-decoration: none; color: var(--muted);
-    font-size: 13px; transition: color .2s;
-  }
+  .footer-col ul li a { text-decoration: none; color: var(--muted); font-size: 13px; transition: color .2s; }
   .footer-col ul li a:hover { color: var(--text); }
-
-  .footer-bottom {
-    border-top: 1px solid var(--border);
-    padding-top: 20px;
-    display: flex; justify-content: space-between; align-items: center;
-  }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; }
   .footer-bottom p { font-size: 12px; color: var(--muted); }
+  .footer-langs { display: flex; gap: 8px; }
+  .footer-langs button { background: none; border: none; color: var(--muted); font-size: 11px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: color .2s; padding: 4px 8px; }
+  .footer-langs button:hover { color: var(--text); }
 
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes ticker {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  /* ── MOBILE NAV ── */
-  .mobile-menu {
-    display: none;
-    position: fixed; inset: 0; z-index: 99;
-    background: rgba(10,14,26,0.98);
-    flex-direction: column; align-items: center; justify-content: center;
-    gap: 32px;
-  }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a {
-    text-decoration: none; color: var(--text);
-    font-size: 22px; letter-spacing: 1px;
-  }
-  .mobile-menu .close-btn {
-    position: absolute; top: 20px; right: 24px;
-    background: none; border: none;
-    color: var(--text); font-size: 28px; cursor: pointer;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .nav-cta-desktop { display: none; }
-    .hamburger { display: flex; }
-
-    .hero-stats {
-      bottom: 70px;
-      gap: 24px;
-    }
-
-    .contact-grid { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-
-    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-
-    .fish-grid { grid-template-columns: 1fr; }
-
-    #shop, #contact { padding: 80px 5% 60px; }
-  }
-
-  @media (max-width: 480px) {
-    .hero-stats { flex-wrap: wrap; gap: 20px 32px; }
-    .inquiry-form { padding: 20px; }
-  }
-
-  /* Scroll hint arrow */
-  .scroll-hint {
-    position: absolute; bottom: 130px; left: 50%; transform: translateX(-50%);
-    z-index: 2; animation: bounce 2s infinite;
-    color: var(--muted); font-size: 22px;
-  }
-  @keyframes bounce {
-    0%,100% { transform: translateX(-50%) translateY(0); opacity: .5; }
-    50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
-  }
-
-  /* Toast */
+  /* ─── TOAST ─── */
   .toast {
-    position: fixed; bottom: 30px; right: 30px; z-index: 999;
+    position: fixed; bottom: 28px; right: 28px; z-index: 999;
     background: var(--card2); border: 1px solid rgba(0,200,224,0.3);
-    border-radius: 12px; padding: 14px 20px;
-    font-size: 14px; color: var(--accent2);
-    opacity: 0; transform: translateY(10px);
-    transition: all .3s; pointer-events: none;
+    border-radius: 12px; padding: 13px 20px; font-size: 13px; color: var(--accent2);
+    opacity: 0; transform: translateY(10px); transition: all .3s; pointer-events: none;
   }
   .toast.show { opacity: 1; transform: translateY(0); }
+
+  /* ─── KEYFRAMES ─── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); opacity: .4; } 50% { transform: translateX(-50%) translateY(8px); opacity: .9; } }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 840px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .about-img { aspect-ratio: 16/7; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    .fish-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { gap: 20px; flex-wrap: wrap; }
+    #shop, #contact, #about { padding-left: 20px; padding-right: 20px; }
+    .inquiry-form { padding: 22px 18px; }
+    .lang-btn .lang-label { display: none; }
+  }
 </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
+<!-- LANG BAR -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('es')" id="lb-es"><span>🇪🇸</span><span class="lang-label">Español</span></button>
+  <div class="lang-div"></div>
+  <button class="lang-btn" onclick="setLang('ca')" id="lb-ca"><span>🏴</span><span class="lang-label">Català</span></button>
+  <div class="lang-div"></div>
+  <button class="lang-btn" onclick="setLang('en')" id="lb-en"><span>🇬🇧</span><span class="lang-label">English</span></button>
+</div>
+
+<!-- NAV -->
 <nav>
   <a href="#hero" class="logo">
     <div class="logo-icon">GK</div>
     <div class="logo-text">
       <span class="logo-main">GUPPY KING</span>
-      <span class="logo-sub">Premium Ornamental Fish</span>
+      <span class="logo-sub" data-i18n="nav.tagline">Peces Ornamentales</span>
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="#hero"><span>首页</span> Home</a></li>
-    <li><a href="#shop"><span>鱼类商店</span> Shop</a></li>
-    <li><a href="#about"><span>关于我们</span> About</a></li>
-    <li><a href="#contact"><span>联系我们</span> Contact</a></li>
-    <li><a href="#contact" class="nav-cta">📞 立即购买</a></li>
+    <li><a href="#hero" data-i18n="nav.home">Inicio</a></li>
+    <li><a href="#shop" data-i18n="nav.shop">Tienda</a></li>
+    <li><a href="#about" data-i18n="nav.about">Nosotros</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
+    <li><a href="#contact" class="nav-cta">📞 <span data-i18n="nav.cta">Comprar Ahora</span></a></li>
   </ul>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="菜单">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- Mobile Menu -->
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="close-btn" onclick="toggleMenu()">✕</button>
-  <a href="#hero" onclick="toggleMenu()"><span style="color:var(--muted);font-size:13px">首页</span> Home</a>
-  <a href="#shop" onclick="toggleMenu()"><span style="color:var(--muted);font-size:13px">鱼类商店</span> Shop</a>
-  <a href="#contact" onclick="toggleMenu()"><span style="color:var(--muted);font-size:13px">联系我们</span> Contact</a>
-  <a href="#contact" class="btn-primary" onclick="toggleMenu()">📞 立即购买</a>
+  <a href="#hero" onclick="toggleMenu()" data-i18n="nav.home">Inicio</a>
+  <a href="#shop" onclick="toggleMenu()" data-i18n="nav.shop">Tienda</a>
+  <a href="#about" onclick="toggleMenu()" data-i18n="nav.about">Nosotros</a>
+  <a href="#contact" onclick="toggleMenu()" data-i18n="nav.contact">Contacto</a>
+  <a href="#contact" class="btn-primary" onclick="toggleMenu()">📞 <span data-i18n="nav.cta">Comprar Ahora</span></a>
+  <div class="mob-langs">
+    <button class="lang-btn active" onclick="setLang('es')" id="mlb-es">🇪🇸 ES</button>
+    <button class="lang-btn" onclick="setLang('ca')" id="mlb-ca">🏴 CA</button>
+    <button class="lang-btn" onclick="setLang('en')" id="mlb-en">🇬🇧 EN</button>
+  </div>
 </div>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section id="hero">
   <div class="hero-fish-bg"></div>
-  <div class="hero-bg"></div>
-
+  <div class="hero-ov"></div>
   <div class="hero-content">
-    <div class="hero-badge">⭐ 顶级观赏鱼供应商 · Premium Ornamental Fish</div>
-    <h1 class="hero-title">
-      <span class="line1">GUPPY</span>
-      <span class="line2">KING</span>
-    </h1>
-    <p class="hero-sub">专业培育 · 品质保证 · 全国发货</p>
-    <p class="hero-desc">We specialize in rare and premium ornamental fish — guppies, koi, betta & more. Bred with care, delivered alive to your door.</p>
+    <div class="hero-badge">⭐ <span data-i18n="hero.badge">Selección Premium · Barcelona</span></div>
+    <h1 class="hero-title"><span class="t1">GUPPY</span><span class="t2">KING</span></h1>
+    <p class="hero-tagline" data-i18n="hero.tagline">Especialistas en peces ornamentales</p>
+    <p class="hero-desc" data-i18n="hero.desc">Ofrecemos una selección exclusiva de peces ornamentales de alta calidad, criados con mimo en nuestras instalaciones certificadas y enviados vivos a toda España.</p>
     <div class="hero-btns">
-      <a href="#shop" class="btn-primary">🐟 浏览所有鱼类 Browse Fish</a>
-      <a href="#contact" class="btn-outline">💬 联系我们 Contact Us</a>
+      <a href="#shop" class="btn-primary">🐟 <span data-i18n="hero.btn1">Ver Todos los Peces</span></a>
+      <a href="#contact" class="btn-outline">💬 <span data-i18n="hero.btn2">Contáctanos</span></a>
     </div>
   </div>
-
-  <div class="scroll-hint">↓</div>
-
+  <div class="scroll-arrow">↓</div>
   <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num">500+</div>
-      <div class="stat-label">鱼种 Species</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">10年+</div>
-      <div class="stat-label">经验 Experience</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">全国</div>
-      <div class="stat-label">配送 Delivery</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">99%</div>
-      <div class="stat-label">存活率 Survival Rate</div>
-    </div>
+    <div class="stat"><div class="stat-num">200+</div><div class="stat-label" data-i18n="stats.species">Especies</div></div>
+    <div class="stat"><div class="stat-num">10+</div><div class="stat-label" data-i18n="stats.years">Años Exp.</div></div>
+    <div class="stat"><div class="stat-num">ESP</div><div class="stat-label" data-i18n="stats.delivery">Envío Nacional</div></div>
+    <div class="stat"><div class="stat-num">99%</div><div class="stat-label" data-i18n="stats.survival">Supervivencia</div></div>
   </div>
-
-  <div class="hero-ticker">
-    <div class="ticker-inner">
-      <span class="ticker-item"><span class="ticker-icon">✈</span> 活体空运保障 Live Shipping</span>
-      <span class="ticker-item"><span class="ticker-icon">🛡</span> 到货存活承诺 Alive Guarantee</span>
-      <span class="ticker-item"><span class="ticker-icon">⭐</span> 精选品系培育 Premium Bred</span>
-      <span class="ticker-item"><span class="ticker-icon">📦</span> 专业包装处理 Pro Packing</span>
-      <span class="ticker-item"><span class="ticker-icon">✈</span> 活体空运保障 Live Shipping</span>
-      <span class="ticker-item"><span class="ticker-icon">🛡</span> 到货存活承诺 Alive Guarantee</span>
-      <span class="ticker-item"><span class="ticker-icon">⭐</span> 精选品系培育 Premium Bred</span>
-      <span class="ticker-item"><span class="ticker-icon">📦</span> 专业包装处理 Pro Packing</span>
-    </div>
-  </div>
+  <div class="ticker-bar"><div class="ticker-track" id="tickerTrack"></div></div>
 </section>
 
-<!-- ── SHOP ── -->
+<!-- SHOP -->
 <section id="shop">
-  <div style="text-align:center; margin-bottom:8px">
-    <span class="section-badge">🐠 精选鱼类 Premium Selection</span>
+  <div class="section-head">
+    <div class="section-badge">🐠 <span data-i18n="shop.badge">Selección Premium</span></div>
+    <h2 class="section-title" data-i18n="shop.title">Nuestros Peces</h2>
+    <p class="section-sub" data-i18n="shop.sub">Todos los peces son seleccionados a mano y criados en nuestras instalaciones certificadas</p>
   </div>
-  <div style="text-align:center">
-    <h2 class="section-title">我们的观赏鱼</h2>
-    <p class="section-sub">Our Collection — All fish are hand-selected and bred in our certified facilities</p>
+  <div class="filter-tabs">
+    <button class="tab active" onclick="filterFish('all',this)" data-i18n="filter.all">Todos</button>
+    <button class="tab" onclick="filterFish('guppy',this)" data-i18n="filter.guppy">Guppy</button>
+    <button class="tab" onclick="filterFish('koi',this)" data-i18n="filter.koi">Koi</button>
+    <button class="tab" onclick="filterFish('betta',this)" data-i18n="filter.betta">Betta</button>
+    <button class="tab" onclick="filterFish('tropical',this)" data-i18n="filter.tropical">Tropicales</button>
   </div>
-
-  <div class="filter-tabs" style="justify-content:center">
-    <button class="tab active" onclick="filterFish('all', this)">全部 All</button>
-    <button class="tab" onclick="filterFish('guppy', this)">孔雀鱼 Guppy</button>
-    <button class="tab" onclick="filterFish('koi', this)">锦鲤 Koi</button>
-    <button class="tab" onclick="filterFish('betta', this)">斗鱼 Betta</button>
-    <button class="tab" onclick="filterFish('tropical', this)">热带鱼 Tropical</button>
-  </div>
-
   <div class="fish-grid" id="fishGrid">
 
-    <div class="fish-card" data-cat="guppy">
+    <div class="fish-card" data-cat="guppy" style="animation-delay:.05s">
       <div class="fish-img-wrap">
-        <img src="https://images.unsplash.com/photo-1520302630591-fd1298ddaa08?w=500&q=80" alt="红草尾孔雀鱼" loading="lazy">
-        <span class="fish-badge badge-hot">热销</span>
+        <img src="https://images.unsplash.com/photo-1520302630591-fd1298ddaa08?w=500&q=80" alt="" loading="lazy">
+        <span class="fish-badge b-hot" data-i18n="badge.hot">Más Vendido</span>
       </div>
       <div class="fish-info">
-        <div class="fish-meta">
-          <span class="fish-tag">🏷 爆款</span>
-          <div><span class="stars">★★★★</span><span class="review-count">(128)</span></div>
-        </div>
-        <div class="fish-name-cn">红草尾孔雀鱼</div>
-        <div class="fish-name-en">Red Grass Guppy</div>
-        <div class="fish-desc">色泽鲜艳，尾鳍如红色蕾丝，游姿优雅</div>
+        <div class="fish-meta"><span class="fish-tag">🏷 <span data-i18n="tag.bestseller">Éxito</span></span><div><span class="stars">★★★★</span><span class="rcount">(128)</span></div></div>
+        <div class="fish-name" data-i18n="fish1.name">Guppy Cola Roja</div>
+        <div class="fish-sci">Poecilia reticulata</div>
+        <div class="fish-desc" data-i18n="fish1.desc">Aleta caudal de encaje rojo intenso, movimiento elegante y porte majestuoso.</div>
         <div class="fish-footer">
-          <div class="fish-price">¥68 <span>/ 对</span></div>
-          <button class="btn-cart" onclick="addToCart('红草尾孔雀鱼')">🛒 加入购物车</button>
+          <div class="fish-price">€8 <small data-i18n="price.pair">/ pareja</small></div>
+          <button class="btn-cart" onclick="addToCart(this)">🛒 <span data-i18n="btn.cart">Añadir</span></button>
         </div>
       </div>
     </div>
 
-    <div class="fish-card" data-cat="koi">
+    <div class="fish-card" data-cat="koi" style="animation-delay:.1s">
       <div class="fish-img-wrap">
-        <img src="https://images.unsplash.com/photo-1584553391641-b4d2d48613e9?w=500&q=80" alt="昭和三色锦鲤" loading="lazy">
-        <span class="fish-badge badge-new">精品</span>
+        <img src="https://images.unsplash.com/photo-1584553391641-b4d2d48613e9?w=500&q=80" alt="" loading="lazy">
+        <span class="fish-badge b-new" data-i18n="badge.premium">Premium</span>
       </div>
       <div class="fish-info">
-        <div class="fish-meta">
-          <span class="fish-tag">🏷 精品</span>
-          <div><span class="stars">★★★★★</span><span class="review-count">(56)</span></div>
-        </div>
-        <div class="fish-name-cn">昭和三色锦鲤</div>
-        <div class="fish-name-en">Showa Koi</div>
-        <div class="fish-desc">日本血统，红白黑三色分明，体型饱满</div>
+        <div class="fish-meta"><span class="fish-tag">🏷 <span data-i18n="tag.premium">Premium</span></span><div><span class="stars">★★★★★</span><span class="rcount">(56)</span></div></div>
+        <div class="fish-name" data-i18n="fish2.name">Koi Showa Tricolor</div>
+        <div class="fish-sci">Cyprinus carpio</div>
+        <div class="fish-desc" data-i18n="fish2.desc">Sangre japonesa, patrón tricolor rojo-blanco-negro perfectamente definido.</div>
         <div class="fish-footer">
-          <div class="fish-price">¥380 <span>/ 条</span></div>
-          <button class="btn-cart" onclick="addToCart('昭和三色锦鲤')">🛒 加入购物车</button>
+          <div class="fish-price">€45 <small data-i18n="price.unit">/ ud.</small></div>
+          <button class="btn-cart" onclick="addToCart(this)">🛒 <span data-i18n="btn.cart">Añadir</span></button>
         </div>
       </div>
     </div>
 
-    <div class="fish-card" data-cat="betta">
+    <div class="fish-card" data-cat="betta" style="animation-delay:.15s">
       <div class="fish-img-wrap">
-        <img src="https://images.unsplash.com/photo-1599202860130-f600f4948364?w=500&q=80" alt="红蓝半月斗鱼" loading="lazy">
-        <span class="fish-badge badge-new">新品</span>
+        <img src="https://images.unsplash.com/photo-1599202860130-f600f4948364?w=500&q=80" alt="" loading="lazy">
+        <span class="fish-badge b-new" data-i18n="badge.new">Novedad</span>
       </div>
       <div class="fish-info">
-        <div class="fish-meta">
-          <span class="fish-tag">🏷 新品</span>
-          <div><span class="stars">★★★★</span><span class="review-count">(89)</span></div>
-        </div>
-        <div class="fish-name-cn">红蓝半月斗鱼</div>
-        <div class="fish-name-en">Halfmoon Betta</div>
-        <div class="fish-desc">尾展180°，红蓝渐变，马志昂扬</div>
+        <div class="fish-meta"><span class="fish-tag">🏷 <span data-i18n="tag.new">Nuevo</span></span><div><span class="stars">★★★★</span><span class="rcount">(89)</span></div></div>
+        <div class="fish-name" data-i18n="fish3.name">Betta Halfmoon Azul-Rojo</div>
+        <div class="fish-sci">Betta splendens</div>
+        <div class="fish-desc" data-i18n="fish3.desc">Aleta caudal de 180°, degradado azul-rojo espectacular, carácter imponente.</div>
         <div class="fish-footer">
-          <div class="fish-price">¥128 <span>/ 条</span></div>
-          <button class="btn-cart" onclick="addToCart('红蓝半月斗鱼')">🛒 加入购物车</button>
+          <div class="fish-price">€15 <small data-i18n="price.unit">/ ud.</small></div>
+          <button class="btn-cart" onclick="addToCart(this)">🛒 <span data-i18n="btn.cart">Añadir</span></button>
         </div>
       </div>
     </div>
 
-    <div class="fish-card" data-cat="koi">
+    <div class="fish-card" data-cat="koi" style="animation-delay:.2s">
       <div class="fish-img-wrap">
-        <img src="https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?w=500&q=80" alt="白写锦鲤" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1578507065211-1c4e99a5fd24?w=500&q=80" alt="" loading="lazy">
       </div>
       <div class="fish-info">
-        <div class="fish-meta">
-          <span class="fish-tag">🏷 推荐</span>
-          <div><span class="stars">★★★★★</span><span class="review-count">(42)</span></div>
-        </div>
-        <div class="fish-name-cn">白写锦鲤</div>
-        <div class="fish-name-en">Shiro Utsuri Koi</div>
-        <div class="fish-desc">纯白底色配黑色水墨纹路，高级感十足</div>
+        <div class="fish-meta"><span class="fish-tag">🏷 <span data-i18n="tag.recommended">Recom.</span></span><div><span class="stars">★★★★★</span><span class="rcount">(42)</span></div></div>
+        <div class="fish-name" data-i18n="fish4.name">Koi Shiro Utsuri</div>
+        <div class="fish-sci">Cyprinus carpio</div>
+        <div class="fish-desc" data-i18n="fish4.desc">Fondo blanco puro con manchas negras en tinta, elegancia japonesa clásica.</div>
         <div class="fish-footer">
-          <div class="fish-price">¥520 <span>/ 条</span></div>
-          <button class="btn-cart" onclick="addToCart('白写锦鲤')">🛒 加入购物车</button>
+          <div class="fish-price">€60 <small data-i18n="price.unit">/ ud.</small></div>
+          <button class="btn-cart" onclick="addToCart(this)">🛒 <span data-i18n="btn.cart">Añadir</span></button>
         </div>
       </div>
     </div>
 
-    <div class="fish-card" data-cat="tropical">
+    <div class="fish-card" data-cat="tropical" style="animation-delay:.25s">
       <div class="fish-img-wrap">
-        <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?w=500&q=80" alt="霓虹灯鱼" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?w=500&q=80" alt="" loading="lazy">
       </div>
       <div class="fish-info">
-        <div class="fish-meta">
-          <span class="fish-tag">🏷 经典</span>
-          <div><span class="stars">★★★★</span><span class="review-count">(203)</span></div>
-        </div>
-        <div class="fish-name-cn">霓虹灯鱼</div>
-        <div class="fish-name-en">Neon Tetra</div>
-        <div class="fish-desc">群游成群，蓝红光带如彩虹般闪耀</div>
+        <div class="fish-meta"><span class="fish-tag">🏷 <span data-i18n="tag.classic">Clásico</span></span><div><span class="stars">★★★★</span><span class="rcount">(203)</span></div></div>
+        <div class="fish-name" data-i18n="fish5.name">Neón Tetra</div>
+        <div class="fish-sci">Paracheirodon innesi</div>
+        <div class="fish-desc" data-i18n="fish5.desc">Cardumen luminoso, franja azul-roja neón, ideal para acuarios plantados.</div>
         <div class="fish-footer">
-          <div class="fish-price">¥12 <span>/ 条</span></div>
-          <button class="btn-cart" onclick="addToCart('霓虹灯鱼')">🛒 加入购物车</button>
+          <div class="fish-price">€2 <small data-i18n="price.unit">/ ud.</small></div>
+          <button class="btn-cart" onclick="addToCart(this)">🛒 <span data-i18n="btn.cart">Añadir</span></button>
         </div>
       </div>
     </div>
 
-    <div class="fish-card" data-cat="betta">
+    <div class="fish-card" data-cat="betta" style="animation-delay:.3s">
       <div class="fish-img-wrap">
-        <img src="https://images.unsplash.com/photo-1655897688213-73d7ec25b12e?w=500&q=80" alt="皇冠斗鱼" loading="lazy">
-        <span class="fish-badge badge-limited">限品</span>
+        <img src="https://images.unsplash.com/photo-1655897688213-73d7ec25b12e?w=500&q=80" alt="" loading="lazy">
+        <span class="fish-badge b-ltd" data-i18n="badge.limited">Limitado</span>
       </div>
       <div class="fish-info">
-        <div class="fish-meta">
-          <span class="fish-tag">🏷 限量</span>
-          <div><span class="stars">★★★★★</span><span class="review-count">(17)</span></div>
-        </div>
-        <div class="fish-name-cn">皇冠斗鱼</div>
-        <div class="fish-name-en">Crowntail Betta</div>
-        <div class="fish-desc">尾鳍如皇冠锯齿状，张开时气势磅礴</div>
+        <div class="fish-meta"><span class="fish-tag">🏷 <span data-i18n="tag.limited">Limitado</span></span><div><span class="stars">★★★★★</span><span class="rcount">(17)</span></div></div>
+        <div class="fish-name" data-i18n="fish6.name">Betta Crowntail Rojo</div>
+        <div class="fish-sci">Betta splendens</div>
+        <div class="fish-desc" data-i18n="fish6.desc">Aleta caudal en corona serrada, presencia espectacular cuando se despliega.</div>
         <div class="fish-footer">
-          <div class="fish-price">¥98 <span>/ 条</span></div>
-          <button class="btn-cart" onclick="addToCart('皇冠斗鱼')">🛒 加入购物车</button>
+          <div class="fish-price">€12 <small data-i18n="price.unit">/ ud.</small></div>
+          <button class="btn-cart" onclick="addToCart(this)">🛒 <span data-i18n="btn.cart">Añadir</span></button>
         </div>
       </div>
     </div>
 
-    <div class="fish-card" data-cat="guppy">
+    <div class="fish-card" data-cat="guppy" style="animation-delay:.35s">
       <div class="fish-img-wrap">
-        <img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=500&q=80" alt="蓝礼服孔雀鱼" loading="lazy">
-        <span class="fish-badge badge-rare">稀有</span>
+        <img src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=500&q=80" alt="" loading="lazy">
+        <span class="fish-badge b-rare" data-i18n="badge.rare">Raro</span>
       </div>
       <div class="fish-info">
-        <div class="fish-meta">
-          <span class="fish-tag">🏷 稀有</span>
-          <div><span class="stars">★★★★★</span><span class="review-count">(34)</span></div>
-        </div>
-        <div class="fish-name-cn">蓝礼服孔雀鱼</div>
-        <div class="fish-name-en">Blue Tuxedo Guppy</div>
-        <div class="fish-desc">蓝黑礼服纹路，尾扇宽大，气质高雅</div>
+        <div class="fish-meta"><span class="fish-tag">🏷 <span data-i18n="tag.rare">Raro</span></span><div><span class="stars">★★★★★</span><span class="rcount">(34)</span></div></div>
+        <div class="fish-name" data-i18n="fish7.name">Guppy Tuxedo Azul</div>
+        <div class="fish-sci">Poecilia reticulata</div>
+        <div class="fish-desc" data-i18n="fish7.desc">Patrón esmoquin azul-negro, aleta caudal ancha, porte elegante y distinguido.</div>
         <div class="fish-footer">
-          <div class="fish-price">¥88 <span>/ 对</span></div>
-          <button class="btn-cart" onclick="addToCart('蓝礼服孔雀鱼')">🛒 加入购物车</button>
+          <div class="fish-price">€10 <small data-i18n="price.pair">/ pareja</small></div>
+          <button class="btn-cart" onclick="addToCart(this)">🛒 <span data-i18n="btn.cart">Añadir</span></button>
         </div>
       </div>
     </div>
 
-    <div class="fish-card" data-cat="tropical">
+    <div class="fish-card" data-cat="tropical" style="animation-delay:.4s">
       <div class="fish-img-wrap">
-        <img src="https://images.unsplash.com/photo-1504618223053-559bdef9ad5c?w=500&q=80" alt="神仙鱼" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1504618223053-559bdef9ad5c?w=500&q=80" alt="" loading="lazy">
       </div>
       <div class="fish-info">
-        <div class="fish-meta">
-          <span class="fish-tag">🏷 经典</span>
-          <div><span class="stars">★★★★</span><span class="review-count">(77)</span></div>
-        </div>
-        <div class="fish-name-cn">神仙鱼</div>
-        <div class="fish-name-en">Angelfish</div>
-        <div class="fish-desc">体型优雅，黑白竖纹，水族箱的王者</div>
+        <div class="fish-meta"><span class="fish-tag">🏷 <span data-i18n="tag.classic">Clásico</span></span><div><span class="stars">★★★★</span><span class="rcount">(77)</span></div></div>
+        <div class="fish-name" data-i18n="fish8.name">Pez Ángel</div>
+        <div class="fish-sci">Pterophyllum scalare</div>
+        <div class="fish-desc" data-i18n="fish8.desc">Forma triangular icónica, rayas verticales negras, rey del acuario tropical.</div>
         <div class="fish-footer">
-          <div class="fish-price">¥45 <span>/ 条</span></div>
-          <button class="btn-cart" onclick="addToCart('神仙鱼')">🛒 加入购物车</button>
+          <div class="fish-price">€6 <small data-i18n="price.unit">/ ud.</small></div>
+          <button class="btn-cart" onclick="addToCart(this)">🛒 <span data-i18n="btn.cart">Añadir</span></button>
         </div>
       </div>
     </div>
 
-    <div class="fish-card" data-cat="koi">
+    <div class="fish-card" data-cat="koi" style="animation-delay:.45s">
       <div class="fish-img-wrap">
-        <img src="https://images.unsplash.com/photo-1560275619-4cc5fa59d3ae?w=500&q=80" alt="红白锦鲤" loading="lazy">
-        <span class="fish-badge badge-hot">热销</span>
+        <img src="https://images.unsplash.com/photo-1560275619-4cc5fa59d3ae?w=500&q=80" alt="" loading="lazy">
+        <span class="fish-badge b-hot" data-i18n="badge.hot">Más Vendido</span>
       </div>
       <div class="fish-info">
-        <div class="fish-meta">
-          <span class="fish-tag">🏷 爆款</span>
-          <div><span class="stars">★★★★★</span><span class="review-count">(91)</span></div>
-        </div>
-        <div class="fish-name-cn">红白锦鲤</div>
-        <div class="fish-name-en">Kohaku Koi</div>
-        <div class="fish-desc">最经典锦鲤品系，红白分明，象征吉祥</div>
+        <div class="fish-meta"><span class="fish-tag">🏷 <span data-i18n="tag.bestseller">Éxito</span></span><div><span class="stars">★★★★★</span><span class="rcount">(91)</span></div></div>
+        <div class="fish-name" data-i18n="fish9.name">Koi Kohaku</div>
+        <div class="fish-sci">Cyprinus carpio</div>
+        <div class="fish-desc" data-i18n="fish9.desc">La variedad más icónica: blanco nieve con manchas rojas, símbolo de buena suerte.</div>
         <div class="fish-footer">
-          <div class="fish-price">¥280 <span>/ 条</span></div>
-          <button class="btn-cart" onclick="addToCart('红白锦鲤')">🛒 加入购物车</button>
+          <div class="fish-price">€32 <small data-i18n="price.unit">/ ud.</small></div>
+          <button class="btn-cart" onclick="addToCart(this)">🛒 <span data-i18n="btn.cart">Añadir</span></button>
         </div>
       </div>
     </div>
@@ -855,95 +594,85 @@
   </div>
 </section>
 
-<!-- ── CONTACT ── -->
-<section id="contact">
-  <div style="text-align:center; margin-bottom:8px">
-    <span class="section-badge">💬 联系我们 Get in Touch</span>
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img">
+      <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" alt="Instalaciones">
+    </div>
+    <div class="about-text">
+      <div class="section-badge" style="display:inline-flex">🏅 <span data-i18n="about.badge">Sobre Nosotros</span></div>
+      <h3 data-i18n="about.title">Pasión por los Peces desde 2014</h3>
+      <p data-i18n="about.p1">Guppy King nació en el corazón de Barcelona como un proyecto de pasión. Durante más de una década hemos criado y distribuido peces ornamentales de la más alta calidad a acuaristas de toda España.</p>
+      <p data-i18n="about.p2">Nuestras instalaciones están certificadas y monitorizadas 24/7. Cada pez recibe atención veterinaria regular y es aclimatado antes del envío para garantizar su llegada vivo y sano.</p>
+      <div class="pill-list">
+        <div class="pill"><em>✓</em> <span data-i18n="pill.cert">Instalaciones Certificadas</span></div>
+        <div class="pill"><em>✓</em> <span data-i18n="pill.vet">Control Veterinario</span></div>
+        <div class="pill"><em>✓</em> <span data-i18n="pill.ship">Envío en 24h</span></div>
+        <div class="pill"><em>✓</em> <span data-i18n="pill.guarantee">Garantía Vivo</span></div>
+        <div class="pill"><em>✓</em> <span data-i18n="pill.advice">Asesoría Gratis</span></div>
+      </div>
+    </div>
   </div>
-  <div style="text-align:center; margin-bottom:48px">
-    <h2 class="section-title">联系 Guppy King</h2>
-    <p class="section-sub">We respond within 24 hours · 24小时内回复</p>
-  </div>
+</section>
 
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-head">
+    <div class="section-badge">💬 <span data-i18n="contact.badge">Contacta con Nosotros</span></div>
+    <h2 class="section-title" data-i18n="contact.title">Habla con Guppy King</h2>
+    <p class="section-sub" data-i18n="contact.sub">Respondemos en menos de 24 horas · Asesoría personalizada</p>
+  </div>
   <div class="contact-grid">
-    <!-- Left info -->
-    <div class="contact-info">
+    <div class="contact-left">
       <div class="info-card">
         <div class="info-icon">📞</div>
-        <div class="info-body">
-          <div class="info-label">电话 / WeChat</div>
-          <div class="info-value">+86 138 0000 0000</div>
-          <div class="info-note">Mon–Sat 9:00–20:00</div>
-        </div>
+        <div><div class="info-label" data-i18n="info.phone">Teléfono</div><div class="info-value">+34 93 000 0000</div><div class="info-note" data-i18n="info.phone.note">Lun–Sáb 9:00–20:00</div></div>
       </div>
       <div class="info-card">
-        <div class="info-icon">✉</div>
-        <div class="info-body">
-          <div class="info-label">邮箱 Email</div>
-          <div class="info-value">hello@guppyking.cn</div>
-          <div class="info-note">24小时内回复 · Reply within 24h</div>
-        </div>
+        <div class="info-icon">✉️</div>
+        <div><div class="info-label" data-i18n="info.email">Correo</div><div class="info-value">hola@guppyking.es</div><div class="info-note" data-i18n="info.email.note">Respuesta en 24h</div></div>
       </div>
       <div class="info-card">
         <div class="info-icon">📍</div>
-        <div class="info-body">
-          <div class="info-label">地址 Address</div>
-          <div class="info-value">广州市花都区观赏鱼养殖基地</div>
-          <div class="info-note">Guangzhou, Huadu District</div>
-        </div>
+        <div><div class="info-label" data-i18n="info.address">Dirección</div><div class="info-value" data-i18n="info.address.val">Carrer de Pallars, 122</div><div class="info-note">08018 Barcelona, Poblenou</div></div>
       </div>
       <div class="info-card">
         <div class="info-icon">🕐</div>
-        <div class="info-body">
-          <div class="info-label">营业时间 Hours</div>
-          <div class="info-value">周一至周六 09:00 – 20:00</div>
-          <div class="info-note">Monday to Saturday</div>
-        </div>
+        <div><div class="info-label" data-i18n="info.hours">Horario</div><div class="info-value" data-i18n="info.hours.val">Lun–Sáb 09:00–20:00</div><div class="info-note" data-i18n="info.hours.note">Dom cerrado</div></div>
       </div>
-      <div class="wechat-card">
-        <div class="wechat-qr">💬</div>
-        <div class="wechat-label">扫码加微信</div>
-        <div class="wechat-sub">Scan to add WeChat for quick inquiry</div>
+      <div class="map-card">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.22!2d2.1943!3d41.4025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2ef6ef80001%3A0x5e0f1c8f4a6b2c3d!2sPoblenou%2C%20Barcelona!5e0!3m2!1ses!2ses!4v1234567890" allowfullscreen loading="lazy"></iframe>
+        <div class="map-label">📍 Poblenou, Barcelona</div>
       </div>
     </div>
 
-    <!-- Right form -->
     <div class="inquiry-form">
-      <div class="form-title">📋 发送咨询 Send Inquiry</div>
+      <div class="form-title">📋 <span data-i18n="form.title">Enviar Consulta</span></div>
       <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">你的名字 Name *</label>
-          <input class="form-input" type="text" placeholder="张先生 / Mr. Zhang">
-        </div>
-        <div class="form-group">
-          <label class="form-label">联系电话 Phone *</label>
-          <input class="form-input" type="tel" placeholder="138 0000 0000">
-        </div>
+        <div class="fg"><label data-i18n="form.name">Nombre *</label><input type="text" data-i18n-ph="ph.name" placeholder="Tu nombre"></div>
+        <div class="fg"><label data-i18n="form.phone">Teléfono *</label><input type="tel" placeholder="+34 6XX XXX XXX"></div>
       </div>
-      <div class="form-group" style="margin-bottom:16px">
-        <label class="form-label">感兴趣的鱼种 Fish of Interest</label>
-        <select class="form-select">
-          <option value="">请选择 / Please select</option>
-          <option>孔雀鱼 Guppy</option>
-          <option>锦鲤 Koi</option>
-          <option>斗鱼 Betta</option>
-          <option>热带鱼 Tropical</option>
-          <option>其他 Other</option>
+      <div class="fg" style="margin-bottom:14px"><label data-i18n="form.email">Email</label><input type="email" data-i18n-ph="ph.email" placeholder="tu@correo.es"></div>
+      <div class="fg" style="margin-bottom:14px">
+        <label data-i18n="form.interest">Especie de Interés</label>
+        <select>
+          <option data-i18n="form.select.default">Selecciona una especie</option>
+          <option data-i18n="filter.guppy">Guppy</option>
+          <option data-i18n="filter.koi">Koi</option>
+          <option data-i18n="filter.betta">Betta</option>
+          <option data-i18n="filter.tropical">Tropicales</option>
+          <option data-i18n="form.select.other">Otra</option>
         </select>
       </div>
-      <div class="form-group">
-        <label class="form-label">留言 Message</label>
-        <textarea class="form-textarea" placeholder="请描述您的需求，包括数量、品种要求等... Describe your requirements (quantity, species preferences, etc.)"></textarea>
-      </div>
-      <button class="btn-submit" onclick="submitForm()">
-        📨 发送咨询 Send Inquiry
-      </button>
-      <div class="form-note">或直接微信/电话联系：138 0000 0000</div>
+      <div class="fg"><label data-i18n="form.message">Mensaje</label><textarea data-i18n-ph="ph.message" placeholder="Describe lo que buscas..."></textarea></div>
+      <button class="btn-submit" onclick="submitForm()">📨 <span data-i18n="form.submit">Enviar Consulta</span></button>
+      <p class="form-note" data-i18n="form.note">O llámanos directamente al +34 93 000 0000</p>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
@@ -951,85 +680,276 @@
         <div class="logo-icon">GK</div>
         <div class="logo-text">
           <span class="logo-main">GUPPY KING</span>
-          <span class="logo-sub">Premium Ornamental Fish</span>
+          <span class="logo-sub" data-i18n="nav.tagline">Peces Ornamentales</span>
         </div>
       </div>
-      <p>专注高品质观赏鱼培育与销售，十年匠心，一鱼一品。我们的每一条鱼都经过严格筛选，确保品质与健康。</p>
+      <p data-i18n="footer.about">Especializados en peces ornamentales de alta calidad en Barcelona. Más de 10 años de experiencia criando y distribuyendo a acuaristas de toda España.</p>
     </div>
     <div class="footer-col">
-      <h4>快速导航 Links</h4>
+      <h4 data-i18n="footer.nav">Navegación</h4>
       <ul>
-        <li><a href="#hero">首页 Home</a></li>
-        <li><a href="#shop">鱼类商店 Shop</a></li>
-        <li><a href="#contact">联系我们 Contact</a></li>
+        <li><a href="#hero" data-i18n="nav.home">Inicio</a></li>
+        <li><a href="#shop" data-i18n="nav.shop">Tienda</a></li>
+        <li><a href="#about" data-i18n="nav.about">Nosotros</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>服务保障 Policies</h4>
+      <h4 data-i18n="footer.policies">Garantías</h4>
       <ul>
-        <li><a href="#">活体到货保证</a></li>
-        <li><a href="#">运输保险服务</a></li>
-        <li><a href="#">退换货政策</a></li>
-        <li><a href="#">养殖指导支持</a></li>
+        <li><a href="#" data-i18n="policy.alive">Garantía Vivo</a></li>
+        <li><a href="#" data-i18n="policy.shipping">Envío Asegurado</a></li>
+        <li><a href="#" data-i18n="policy.returns">Devoluciones</a></li>
+        <li><a href="#" data-i18n="policy.advice">Asesoría Acuario</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2024 Guppy King · 广州孔雀鱼王</p>
-    <p style="color:var(--muted)">Made with ❤ for fish lovers</p>
+    <p>© 2024 Guppy King · Barcelona · <a href="mailto:hola@guppyking.es" style="color:var(--muted);text-decoration:none">hola@guppyking.es</a></p>
+    <div class="footer-langs">
+      <button onclick="setLang('es')">🇪🇸 ES</button>
+      <button onclick="setLang('ca')">🏴 CA</button>
+      <button onclick="setLang('en')">🇬🇧 EN</button>
+    </div>
   </div>
 </footer>
 
-<!-- Toast -->
-<div class="toast" id="toast">✅ 已加入购物车！</div>
+<div class="toast" id="toast"></div>
 
 <script>
-  // Mobile menu
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
+// ─── TRANSLATIONS ──────────────────────────────────────────
+const T = {
+  es: {
+    "nav.tagline":"Peces Ornamentales","nav.home":"Inicio","nav.shop":"Tienda",
+    "nav.about":"Nosotros","nav.contact":"Contacto","nav.cta":"Comprar Ahora",
+    "hero.badge":"Selección Premium · Barcelona",
+    "hero.tagline":"Especialistas en peces ornamentales",
+    "hero.desc":"Ofrecemos una selección exclusiva de peces ornamentales de alta calidad, criados con mimo en nuestras instalaciones certificadas y enviados vivos a toda España.",
+    "hero.btn1":"Ver Todos los Peces","hero.btn2":"Contáctanos",
+    "stats.species":"Especies","stats.years":"Años Exp.","stats.delivery":"Envío Nacional","stats.survival":"Supervivencia",
+    "shop.badge":"Selección Premium","shop.title":"Nuestros Peces",
+    "shop.sub":"Todos los peces son seleccionados a mano y criados en nuestras instalaciones certificadas",
+    "filter.all":"Todos","filter.guppy":"Guppy","filter.koi":"Koi","filter.betta":"Betta","filter.tropical":"Tropicales",
+    "badge.hot":"Más Vendido","badge.premium":"Premium","badge.new":"Novedad","badge.limited":"Limitado","badge.rare":"Raro",
+    "tag.bestseller":"Éxito","tag.premium":"Premium","tag.new":"Nuevo","tag.recommended":"Recom.",
+    "tag.classic":"Clásico","tag.limited":"Limitado","tag.rare":"Raro",
+    "fish1.name":"Guppy Cola Roja","fish1.desc":"Aleta caudal de encaje rojo intenso, movimiento elegante y porte majestuoso.",
+    "fish2.name":"Koi Showa Tricolor","fish2.desc":"Sangre japonesa, patrón tricolor rojo-blanco-negro perfectamente definido.",
+    "fish3.name":"Betta Halfmoon Azul-Rojo","fish3.desc":"Aleta caudal de 180°, degradado azul-rojo espectacular, carácter imponente.",
+    "fish4.name":"Koi Shiro Utsuri","fish4.desc":"Fondo blanco puro con manchas negras en tinta, elegancia japonesa clásica.",
+    "fish5.name":"Neón Tetra","fish5.desc":"Cardumen luminoso, franja azul-roja neón, ideal para acuarios plantados.",
+    "fish6.name":"Betta Crowntail Rojo","fish6.desc":"Aleta caudal en corona serrada, presencia espectacular cuando se despliega.",
+    "fish7.name":"Guppy Tuxedo Azul","fish7.desc":"Patrón esmoquin azul-negro, aleta caudal ancha, porte elegante y distinguido.",
+    "fish8.name":"Pez Ángel","fish8.desc":"Forma triangular icónica, rayas verticales negras, rey del acuario tropical.",
+    "fish9.name":"Koi Kohaku","fish9.desc":"La variedad más icónica: blanco nieve con manchas rojas, símbolo de buena suerte.",
+    "price.pair":"/ pareja","price.unit":"/ ud.","btn.cart":"Añadir",
+    "about.badge":"Sobre Nosotros","about.title":"Pasión por los Peces desde 2014",
+    "about.p1":"Guppy King nació en el corazón de Barcelona como un proyecto de pasión. Durante más de una década hemos criado y distribuido peces ornamentales de la más alta calidad a acuaristas de toda España.",
+    "about.p2":"Nuestras instalaciones están certificadas y monitorizadas 24/7. Cada pez recibe atención veterinaria regular y es aclimatado antes del envío para garantizar su llegada vivo y sano.",
+    "pill.cert":"Instalaciones Certificadas","pill.vet":"Control Veterinario",
+    "pill.ship":"Envío en 24h","pill.guarantee":"Garantía Vivo","pill.advice":"Asesoría Gratis",
+    "contact.badge":"Contacta con Nosotros","contact.title":"Habla con Guppy King",
+    "contact.sub":"Respondemos en menos de 24 horas · Asesoría personalizada",
+    "info.phone":"Teléfono","info.phone.note":"Lun–Sáb 9:00–20:00",
+    "info.email":"Correo","info.email.note":"Respuesta en 24h",
+    "info.address":"Dirección","info.address.val":"Carrer de Pallars, 122",
+    "info.hours":"Horario","info.hours.val":"Lun–Sáb 09:00–20:00","info.hours.note":"Dom cerrado",
+    "form.title":"Enviar Consulta","form.name":"Nombre *","form.phone":"Teléfono *",
+    "form.email":"Email","form.interest":"Especie de Interés",
+    "form.select.default":"Selecciona una especie","form.select.other":"Otra",
+    "form.message":"Mensaje","form.submit":"Enviar Consulta",
+    "form.note":"O llámanos directamente al +34 93 000 0000",
+    "ph.name":"Tu nombre","ph.email":"tu@correo.es",
+    "ph.message":"Describe lo que buscas (cantidad, especie, tamaño del acuario...)",
+    "footer.about":"Especializados en peces ornamentales de alta calidad en Barcelona. Más de 10 años de experiencia criando y distribuyendo a acuaristas de toda España.",
+    "footer.nav":"Navegación","footer.policies":"Garantías",
+    "policy.alive":"Garantía Vivo","policy.shipping":"Envío Asegurado",
+    "policy.returns":"Devoluciones","policy.advice":"Asesoría Acuario",
+    "toast.cart":"✅ Añadido al carrito: ","toast.form":"📨 ¡Consulta enviada! Te responderemos pronto.",
+    "ticker":["✈ Envío a toda España","🛡 Garantía animal vivo","⭐ Cría certificada","📦 Embalaje profesional","🌊 Instalaciones en Barcelona"]
+  },
+  ca: {
+    "nav.tagline":"Peixos Ornamentals","nav.home":"Inici","nav.shop":"Botiga",
+    "nav.about":"Nosaltres","nav.contact":"Contacte","nav.cta":"Comprar Ara",
+    "hero.badge":"Selecció Premium · Barcelona",
+    "hero.tagline":"Especialistes en peixos ornamentals",
+    "hero.desc":"Oferim una selecció exclusiva de peixos ornamentals d'alta qualitat, criats amb cura a les nostres instal·lacions certificades i enviats vius a tot Espanya.",
+    "hero.btn1":"Veure Tots els Peixos","hero.btn2":"Contacta'ns",
+    "stats.species":"Espècies","stats.years":"Anys Exp.","stats.delivery":"Enviament Nacional","stats.survival":"Supervivència",
+    "shop.badge":"Selecció Premium","shop.title":"Els Nostres Peixos",
+    "shop.sub":"Tots els peixos són seleccionats a mà i criats a les nostres instal·lacions certificades",
+    "filter.all":"Tots","filter.guppy":"Guppy","filter.koi":"Koi","filter.betta":"Betta","filter.tropical":"Tropicals",
+    "badge.hot":"Més Venut","badge.premium":"Premium","badge.new":"Novetat","badge.limited":"Limitat","badge.rare":"Rar",
+    "tag.bestseller":"Èxit","tag.premium":"Premium","tag.new":"Nou","tag.recommended":"Recom.",
+    "tag.classic":"Clàssic","tag.limited":"Limitat","tag.rare":"Rar",
+    "fish1.name":"Guppy Cua Roja","fish1.desc":"Aleta caudal de puntes roges intenses, moviment elegant i port majestuós.",
+    "fish2.name":"Koi Showa Tricolor","fish2.desc":"Sang japonesa, patró tricolor vermell-blanc-negre perfectament definit.",
+    "fish3.name":"Betta Halfmoon Blau-Vermell","fish3.desc":"Aleta caudal de 180°, degradat blau-vermell espectacular, caràcter imponent.",
+    "fish4.name":"Koi Shiro Utsuri","fish4.desc":"Fons blanc pur amb taques negres de tinta, elegància japonesa clàssica.",
+    "fish5.name":"Neó Tetra","fish5.desc":"Banc lluminós, franja blau-vermella neó, ideal per a aquaris plantats.",
+    "fish6.name":"Betta Crowntail Vermell","fish6.desc":"Aleta caudal en corona serrada, presència espectacular quan es desplega.",
+    "fish7.name":"Guppy Tuxedo Blau","fish7.desc":"Patró esmòquing blau-negre, aleta caudal ampla, port elegant i distingit.",
+    "fish8.name":"Peix Àngel","fish8.desc":"Forma triangular icònica, ratlles verticals negres, rei de l'aquari tropical.",
+    "fish9.name":"Koi Kohaku","fish9.desc":"La varietat més icònica: blanc neu amb taques vermelles, símbol de bona sort.",
+    "price.pair":"/ parella","price.unit":"/ u.","btn.cart":"Afegir",
+    "about.badge":"Sobre Nosaltres","about.title":"Passió pels Peixos des de 2014",
+    "about.p1":"Guppy King va néixer al cor de Barcelona com un projecte de passió. Durant més d'una dècada hem criat i distribuït peixos ornamentals de la més alta qualitat a aquaristes de tot Espanya.",
+    "about.p2":"Les nostres instal·lacions estan certificades i monitorades 24/7. Cada peix rep atenció veterinària regular i s'aclimata abans de l'enviament per garantir l'arribada viu i sa.",
+    "pill.cert":"Instal·lacions Certificades","pill.vet":"Control Veterinari",
+    "pill.ship":"Enviament en 24h","pill.guarantee":"Garantia Viu","pill.advice":"Assessoria Gratis",
+    "contact.badge":"Contacta amb Nosaltres","contact.title":"Parla amb Guppy King",
+    "contact.sub":"Responem en menys de 24 hores · Assessoria personalitzada",
+    "info.phone":"Telèfon","info.phone.note":"Dl–Ds 9:00–20:00",
+    "info.email":"Correu","info.email.note":"Resposta en 24h",
+    "info.address":"Adreça","info.address.val":"Carrer de Pallars, 122",
+    "info.hours":"Horari","info.hours.val":"Dl–Ds 09:00–20:00","info.hours.note":"Dg tancat",
+    "form.title":"Enviar Consulta","form.name":"Nom *","form.phone":"Telèfon *",
+    "form.email":"Correu","form.interest":"Espècie d'Interès",
+    "form.select.default":"Selecciona una espècie","form.select.other":"Altra",
+    "form.message":"Missatge","form.submit":"Enviar Consulta",
+    "form.note":"O truca'ns directament al +34 93 000 0000",
+    "ph.name":"El teu nom","ph.email":"tu@correu.es",
+    "ph.message":"Descriu el que busques (quantitat, espècie, mida de l'aquari...)",
+    "footer.about":"Especialitzats en peixos ornamentals d'alta qualitat a Barcelona. Més de 10 anys d'experiència criant i distribuint a aquaristes de tot Espanya.",
+    "footer.nav":"Navegació","footer.policies":"Garanties",
+    "policy.alive":"Garantia Viu","policy.shipping":"Enviament Assegurat",
+    "policy.returns":"Devolucions","policy.advice":"Assessoria Aquari",
+    "toast.cart":"✅ Afegit al cistell: ","toast.form":"📨 Consulta enviada! Et respondrem aviat.",
+    "ticker":["✈ Enviament a tot Espanya","🛡 Garantia animal viu","⭐ Cria certificada","📦 Embalatge professional","🌊 Instal·lacions a Barcelona"]
+  },
+  en: {
+    "nav.tagline":"Ornamental Fish","nav.home":"Home","nav.shop":"Shop",
+    "nav.about":"About","nav.contact":"Contact","nav.cta":"Buy Now",
+    "hero.badge":"Premium Selection · Barcelona",
+    "hero.tagline":"Ornamental fish specialists",
+    "hero.desc":"We offer an exclusive selection of premium ornamental fish, hand-bred in our certified Barcelona facilities and shipped alive across Spain and Europe.",
+    "hero.btn1":"Browse All Fish","hero.btn2":"Contact Us",
+    "stats.species":"Species","stats.years":"Years Exp.","stats.delivery":"National Delivery","stats.survival":"Survival Rate",
+    "shop.badge":"Premium Selection","shop.title":"Our Fish",
+    "shop.sub":"All fish are hand-selected and bred in our certified Barcelona facilities",
+    "filter.all":"All","filter.guppy":"Guppy","filter.koi":"Koi","filter.betta":"Betta","filter.tropical":"Tropical",
+    "badge.hot":"Best Seller","badge.premium":"Premium","badge.new":"New","badge.limited":"Limited","badge.rare":"Rare",
+    "tag.bestseller":"Hit","tag.premium":"Premium","tag.new":"New","tag.recommended":"Rec.",
+    "tag.classic":"Classic","tag.limited":"Limited","tag.rare":"Rare",
+    "fish1.name":"Red Grass Guppy","fish1.desc":"Intense red lace caudal fin, elegant movement and majestic bearing.",
+    "fish2.name":"Showa Tricolor Koi","fish2.desc":"Japanese bloodline, perfectly defined red-white-black tricolor pattern.",
+    "fish3.name":"Blue-Red Halfmoon Betta","fish3.desc":"180° caudal fin, spectacular blue-red gradient, imposing character.",
+    "fish4.name":"Shiro Utsuri Koi","fish4.desc":"Pure white base with ink-black markings, classic Japanese elegance.",
+    "fish5.name":"Neon Tetra","fish5.desc":"Luminous schooling fish, neon blue-red stripe, perfect for planted tanks.",
+    "fish6.name":"Red Crowntail Betta","fish6.desc":"Serrated crown-shaped caudal fin, spectacular presence when displayed.",
+    "fish7.name":"Blue Tuxedo Guppy","fish7.desc":"Blue-black tuxedo pattern, wide caudal fin, elegant and distinguished.",
+    "fish8.name":"Angelfish","fish8.desc":"Iconic triangular form, black vertical stripes, king of the tropical aquarium.",
+    "fish9.name":"Kohaku Koi","fish9.desc":"The most iconic koi variety: snow white with red markings, symbol of good luck.",
+    "price.pair":"/ pair","price.unit":"/ ea.","btn.cart":"Add",
+    "about.badge":"About Us","about.title":"A Passion for Fish Since 2014",
+    "about.p1":"Guppy King was born in the heart of Barcelona as a passion project. For over a decade we have bred and distributed premium ornamental fish to aquarists across Spain.",
+    "about.p2":"Our facilities are certified and monitored 24/7. Every fish receives regular veterinary care and is acclimatised before shipping to ensure live, healthy arrival.",
+    "pill.cert":"Certified Facilities","pill.vet":"Vet Control",
+    "pill.ship":"24h Shipping","pill.guarantee":"Live Guarantee","pill.advice":"Free Advice",
+    "contact.badge":"Get in Touch","contact.title":"Talk to Guppy King",
+    "contact.sub":"We reply within 24 hours · Personalised advice",
+    "info.phone":"Phone","info.phone.note":"Mon–Sat 9:00–20:00",
+    "info.email":"Email","info.email.note":"Reply within 24h",
+    "info.address":"Address","info.address.val":"Carrer de Pallars, 122",
+    "info.hours":"Hours","info.hours.val":"Mon–Sat 09:00–20:00","info.hours.note":"Sun closed",
+    "form.title":"Send Enquiry","form.name":"Name *","form.phone":"Phone *",
+    "form.email":"Email","form.interest":"Species of Interest",
+    "form.select.default":"Select a species","form.select.other":"Other",
+    "form.message":"Message","form.submit":"Send Enquiry",
+    "form.note":"Or call us directly on +34 93 000 0000",
+    "ph.name":"Your name","ph.email":"you@email.com",
+    "ph.message":"Describe what you're looking for (quantity, species, tank size...)",
+    "footer.about":"Specialists in premium ornamental fish in Barcelona. Over 10 years of experience breeding and distributing to aquarists across Spain.",
+    "footer.nav":"Navigation","footer.policies":"Guarantees",
+    "policy.alive":"Live Guarantee","policy.shipping":"Insured Shipping",
+    "policy.returns":"Returns Policy","policy.advice":"Aquarium Advice",
+    "toast.cart":"✅ Added to cart: ","toast.form":"📨 Enquiry sent! We'll reply soon.",
+    "ticker":["✈ Shipping across Spain","🛡 Live animal guarantee","⭐ Certified breeding","📦 Professional packaging","🌊 Barcelona facilities"]
   }
+};
 
-  // Fish filter
-  function filterFish(cat, btn) {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.fish-card').forEach(card => {
-      if (cat === 'all' || card.dataset.cat === cat) {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
-      }
+// ─── STATE ────────────────────────────────────────────────
+let lang = 'es';
+
+// ─── SET LANGUAGE ─────────────────────────────────────────
+function setLang(l) {
+  lang = l;
+  const d = T[l];
+
+  // Text nodes
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = d[el.getAttribute('data-i18n')];
+    if (v !== undefined) el.textContent = v;
+  });
+
+  // Placeholders
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const v = d[el.getAttribute('data-i18n-ph')];
+    if (v !== undefined) el.placeholder = v;
+  });
+
+  // Lang button highlights (top bar + mobile)
+  ['es','ca','en'].forEach(x => {
+    ['lb-','mlb-'].forEach(prefix => {
+      const btn = document.getElementById(prefix + x);
+      if (btn) btn.classList.toggle('active', x === l);
     });
-  }
+  });
 
-  // Cart toast
-  function addToCart(name) {
-    const t = document.getElementById('toast');
-    t.textContent = `✅ 已加入购物车：${name}`;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2500);
-  }
+  // html lang + title
+  document.documentElement.lang = l === 'ca' ? 'ca' : l === 'en' ? 'en' : 'es';
+  document.title = { es:'Guppy King · Peces Ornamentales · Barcelona', ca:'Guppy King · Peixos Ornamentals · Barcelona', en:'Guppy King · Premium Ornamental Fish · Barcelona' }[l];
 
-  // Form submit
-  function submitForm() {
-    const t = document.getElementById('toast');
-    t.textContent = '📨 咨询已发送！我们将在24小时内回复。';
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 3000);
-  }
+  buildTicker(l);
+}
 
-  // Animate cards on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        e.target.style.animationDelay = (i * 0.08) + 's';
-        e.target.style.animation = 'fadeUp .6s ease both';
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
+// ─── TICKER ───────────────────────────────────────────────
+function buildTicker(l) {
+  const items = T[l].ticker;
+  const track = document.getElementById('tickerTrack');
+  const doubled = [...items, ...items];
+  track.innerHTML = doubled.map(t => `<span class="ticker-item"><em>◆</em> ${t}</span>`).join('');
+}
 
-  document.querySelectorAll('.fish-card, .info-card').forEach(el => observer.observe(el));
+// ─── FILTER ───────────────────────────────────────────────
+function filterFish(cat, btn) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.fish-card').forEach(card => {
+    card.classList.toggle('hidden', cat !== 'all' && card.dataset.cat !== cat);
+  });
+}
+
+// ─── CART ─────────────────────────────────────────────────
+function addToCart(btn) {
+  const name = btn.closest('.fish-card').querySelector('[data-i18n$=".name"]').textContent;
+  showToast(T[lang]['toast.cart'] + name);
+}
+
+// ─── FORM ─────────────────────────────────────────────────
+function submitForm() { showToast(T[lang]['toast.form']); }
+
+// ─── TOAST ────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ─── MOBILE MENU ──────────────────────────────────────────
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+// ─── SCROLL REVEAL ────────────────────────────────────────
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; io.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fish-card, .info-card, .about-grid > *').forEach(el => io.observe(el));
+
+// ─── INIT ─────────────────────────────────────────────────
+buildTicker('es');
 </script>
 </body>
 </html>
